@@ -3,15 +3,10 @@
 int y, m, d;
 
 int verifyYoon(int y){
-    if(y%4==0 && y%100==0 && y%400==0){
-        return 1;
-    } else if (y%4==0 && y%100){
-        return 0;
-    } else if (y%4==0){
-        return 1;
-    } else {
-        return 0;
-    }
+    if (y%400 == 0) return 1;
+    else if (y%100 == 0) return 0;  
+    else if (y%4   == 0) return 1;
+    else return 0;
 }
 
 void printSeason(int m){
@@ -40,7 +35,7 @@ int verifyExists(int verified_y, int m, int d){
             return 1;
         }
     } else {
-        if(verified_y==1){
+        if(verified_y){
             if(d>29){
                 return 0;
             } else {
@@ -59,7 +54,7 @@ int verifyExists(int verified_y, int m, int d){
 int main(void) {
     scanf("%d %d %d", &y, &m, &d);
     
-    if(verifyExists(verifyYoon(y), m, d)==1){
+    if(verifyExists(verifyYoon(y), m, d)){
         printSeason(m);
     } else {
         printf("-1\n");
